@@ -8,6 +8,7 @@ import LeaderboardPage from "./pages/leaderboards/LeaderboardPage";
 import LoginPage from "./pages/login/LoginPage";
 import RegisterPage from "./pages/register/RegisterPage";
 import MerchPage from "./pages/merch/MerchPage";
+import ProfilePage from "./pages/profile/ProfilePage";
 
 
 function App() {
@@ -23,9 +24,11 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/merch" element={<MerchPage />}></Route>
+        <Route path="/profile" element={<ProfilePage />}></Route>
       </Routes>
     </Router>
   );
 }
 
 export default App;
+

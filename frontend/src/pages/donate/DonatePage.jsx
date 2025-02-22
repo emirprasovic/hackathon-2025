@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const donations = [
   { id: 1, name: "Posadi Drvo", description: "1 BAM posadi jedno drvo" },
@@ -22,21 +22,27 @@ const DonatePage = () => {
   };
 
   const handlePredefinedAmountClick = (amount) => {
-    setSelectedAmount(amount); 
-    setCustomAmount(""); 
+    setSelectedAmount(amount);
+    setCustomAmount("");
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-green-200 p-6"
-    style={{
-      backgroundImage: "url('/images/green2.jpg')",
-      backgroundAttachment: "fixed", 
-      backgroundSize: "cover",
-      backgroundPosition: "center",  
-  }}>
+    <div
+      className="flex flex-col items-center justify-center min-h-screen bg-green-200 p-6"
+      style={{
+        backgroundImage: "url('/images/green2.jpg')",
+        backgroundAttachment: "fixed",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="bg-white p-8 rounded-2xl shadow-xl max-w-lg w-full text-center">
-        <h2 className="text-3xl font-bold text-gradient mb-6">🌳 ConTreeBute!</h2>
-        <p className="text-gray-700 mb-6 text-lg font-semibold">Odaberi vrstu donacije</p>
+        <h2 className="text-3xl font-bold text-gradient mb-6">
+          🌳 ConTreeBute!
+        </h2>
+        <p className="text-gray-700 mb-6 text-lg font-semibold">
+          Odaberi vrstu donacije
+        </p>
 
         <div className="grid grid-cols-2 gap-6 mb-8">
           {donations.map((donation) => (
@@ -57,7 +63,9 @@ const DonatePage = () => {
           ))}
         </div>
 
-        <p className="text-gray-700 mb-6 text-lg font-semibold">Odaberi količinu donacije:</p>
+        <p className="text-gray-700 mb-6 text-lg font-semibold">
+          Odaberi količinu donacije:
+        </p>
         <div className="grid grid-cols-2 gap-6 mb-8">
           {amounts.map((amount) => (
             <button
@@ -76,7 +84,10 @@ const DonatePage = () => {
 
         {/* Custom amount input */}
         <div className="mb-8">
-          <label htmlFor="custom-amount" className="block text-lg font-semibold text-gray-700">
+          <label
+            htmlFor="custom-amount"
+            className="block text-lg font-semibold text-gray-700"
+          >
             Ili unesite vlastiti iznos
           </label>
           <input

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -17,6 +18,7 @@ export default function LoginPage() {
       })
       .then((res) => {
         console.log(res);
+        document.cookie = `jwt=${res.data.token}`;
       });
   }
 
@@ -108,12 +110,12 @@ export default function LoginPage() {
               </button>
               <p className="text-sm font-light text-gray-500">
                 Don’t have an account yet?{" "}
-                <a
-                  href="#"
+                <Link
+                  to={"/register"}
                   className="font-medium text-green-600 hover:underline"
                 >
                   Sign up
-                </a>
+                </Link>
               </p>
             </form>
           </div>
