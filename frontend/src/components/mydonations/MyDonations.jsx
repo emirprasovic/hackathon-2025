@@ -1,18 +1,19 @@
+/* eslint-disable react/prop-types */
 // Mock data
-const leaderboardData = [
-  { name: "Emir", amount: 50, purpose: "tree" },
-  { name: "Emir", amount: 100, purpose: "sea" },
-  { name: "Emir", amount: 75, purpose: "tree" },
-  { name: "Emir", amount: 200, purpose: "sea" },
-  { name: "Emir", amount: 150, purpose: "tree" },
-  { name: "Emir", amount: 50, purpose: "tree" },
-  { name: "Emir", amount: 100, purpose: "sea" },
-  { name: "Emir", amount: 75, purpose: "tree" },
-  { name: "Emir", amount: 200, purpose: "sea" },
-  { name: "Emir", amount: 150, purpose: "tree" },
-];
+// const leaderboardData = [
+//   { name: "Emir", amount: 50, purpose: "tree" },
+//   { name: "Emir", amount: 100, purpose: "sea" },
+//   { name: "Emir", amount: 75, purpose: "tree" },
+//   { name: "Emir", amount: 200, purpose: "sea" },
+//   { name: "Emir", amount: 150, purpose: "tree" },
+//   { name: "Emir", amount: 50, purpose: "tree" },
+//   { name: "Emir", amount: 100, purpose: "sea" },
+//   { name: "Emir", amount: 75, purpose: "tree" },
+//   { name: "Emir", amount: 200, purpose: "sea" },
+//   { name: "Emir", amount: 150, purpose: "tree" },
+// ];
 
-export default function LeaderboardPage() {
+export default function LeaderboardPage({ data }) {
   return (
     <div className="flex flex-col items-center min-h-screen  ">
       <div className="bg-white p-8 rounded-2xl shadow-xl max-w-7xl w-full text-center">
@@ -20,7 +21,7 @@ export default function LeaderboardPage() {
 
         {/* Leaderboard List */}
         <div className="space-y-4">
-          {leaderboardData.map((item, index) => (
+          {data.map((item, index) => (
             <div
               key={index}
               className={`p-6 rounded-lg flex justify-between items-center shadow-lg hover:shadow-2xl transition-all ${
