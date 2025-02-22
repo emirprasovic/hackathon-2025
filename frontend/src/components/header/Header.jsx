@@ -12,17 +12,14 @@ const Header = () => {
   };
 
   useEffect(function () {
-    // console.log(document.cookie.substring(document.cookie.indexOf(";") + 6));
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
-      console.log("TOKEN:", jwt);
       setIsLoggedIn(true);
     } else {
       console.log("You Are Not Logged In");
     }
   }, []);
 
-  console.log("ILIN", isLoggedIn);
   return (
     <header className="pb-6 bg-white-50 shadow-lg lg:pb-0">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -102,26 +99,26 @@ const Header = () => {
           </div>
 
           {/* Desktop Buttons */}
-          {isLoggedIn && (
-            <Link
-              to="/profile"
-              className="items-center justify-center hidden px-4 py-2 ml-10 text-base font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md lg:inline-flex hover:bg-green-700 focus:bg-green-700"
-            >
-              Profil
-            </Link>
-          )}
-          {!isLoggedIn && (
-            <div>
+          {isLoggedIn ? (
+            <div className="hidden lg:flex lg:items-center lg:ml-10">
+              <Link
+                to="/profile"
+                className="px-4 py-2 text-base font-semibold text-white bg-green-600 rounded-md hover:bg-green-700"
+              >
+                Profil
+              </Link>
+            </div>
+          ) : (
+            <div className="hidden lg:flex lg:items-center lg:ml-10">
               <Link
                 to="/login"
-                className="items-center justify-center hidden px-4 py-2 ml-10 font-semibold transition-all duration-200 bg-white border border-green-600 rounded-md text-green-700 lg:inline-flex  focus:bg-green-700 focus:text-white hover:text-white hover:bg-green-700"
+                className="px-4 py-2 mr-4 font-semibold text-green-700 bg-white border border-green-600 rounded-md hover:bg-green-700 hover:text-white"
               >
                 Uloguj se
               </Link>
-
               <Link
                 to="/register"
-                className="items-center justify-center hidden px-4 py-2 ml-10 text-base font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md lg:inline-flex hover:bg-green-700 focus:bg-green-700"
+                className="px-4 py-2 text-base font-semibold text-white bg-green-600 rounded-md hover:bg-green-700"
               >
                 Registruj se
               </Link>
