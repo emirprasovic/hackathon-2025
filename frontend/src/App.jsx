@@ -7,6 +7,8 @@ import "./App.css";
 import LeaderboardPage from "./pages/leaderboards/LeaderboardPage";
 import LoginPage from "./pages/login/LoginPage";
 import RegisterPage from "./pages/register/RegisterPage";
+import MerchPage from "./pages/merch/MerchPage";
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
         <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/merch" element={<MerchPage />}></Route>
       </Routes>
     </Router>
   );
