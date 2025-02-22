@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function LandingPage() {
   return (
     <div className="relative min-h-screen flex items-center justify-center">
@@ -23,13 +25,14 @@ function LandingPage() {
           energije i inovativne tehnologije za hvatanje ugljen-dioksida. Zajedno
           možemo stvoriti održivu budućnost za generacije koje dolaze.
         </p>
-        <button
+        <Link
+          to="/donate" 
           className="px-8 py-4 bg-green-600 text-white text-lg font-semibold rounded-lg 
              hover:bg-green-700 transition-colors duration-300 shadow-lg 
              transform hover:scale-105 transition-transform"
         >
           Napravite Razliku Sada
-        </button>
+        </Link>
       </div>
     </div>
   );

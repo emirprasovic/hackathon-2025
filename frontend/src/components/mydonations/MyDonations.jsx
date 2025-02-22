@@ -17,7 +17,7 @@ export default function LeaderboardPage({ data }) {
   return (
     <div className="flex flex-col items-center min-h-screen  ">
       <div className="bg-white p-8 rounded-2xl shadow-xl max-w-7xl w-full text-center">
-        <h3 className="text-3xl font-bold text-gray-800 mb-6">Moje Donacije</h3>
+        <h3 className="text-2xl font-semibold text-gray-800 mb-6">Moje Donacije</h3>
 
         {/* Leaderboard List */}
         <div className="space-y-4">
