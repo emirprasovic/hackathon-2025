@@ -16,21 +16,20 @@ function LandingPage() {
             {/* Content */}
             <div className="relative max-w-4xl mx-auto text-center px-4">
                 <h1 className="text-6xl md:text-7xl font-bold text-white mb-8">
-                    Save Our Planet,<br />
-                    One Donation at a Time
+                    Spasimo Našu Okolinu,<br />
+                    Jednom po jednom donacijom.
                 </h1>
                 <p className="text-xl text-gray-100 mb-10 leading-relaxed max-w-2xl mx-auto">
-                    Join our mission to combat climate change through targeted carbon reduction initiatives. 
-                    Your donations directly support reforestation projects, renewable energy development, 
-                    and innovative carbon capture technologies. Together, we can create a sustainable 
-                    future for generations to come.
+                    Pridružite se našoj misiji u borbi protiv klimatskih promjena kroz ciljanje inicijativa za smanjenje ugljeničnog otiska.
+                    Vaše donacije direktno podržavaju projekte pošumljavanja, razvoj obnovljivih izvora energije i inovativne tehnologije za
+                    hvatanje ugljen-dioksida. Zajedno možemo stvoriti održivu budućnost za generacije koje dolaze.
                 </p>
-                <button 
+                <button
                     className="px-8 py-4 bg-green-600 text-white text-lg font-semibold rounded-lg 
-                             hover:bg-green-700 transition-colors duration-300 shadow-lg 
-                             transform hover:scale-105 transition-transform"
+             hover:bg-green-700 transition-colors duration-300 shadow-lg 
+             transform hover:scale-105 transition-transform"
                 >
-                    Make a Difference Now
+                    Napravite Razliku Sada
                 </button>
             </div>
         </div>
