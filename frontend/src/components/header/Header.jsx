@@ -42,12 +42,12 @@ const Header = () => {
 
                     {/* Desktop Buttons */}
                     <Link to="/login"
-                        className="items-center justify-center hidden px-4 py-3 ml-10 font-semibold transition-all duration-200 bg-white border border-green-600 rounded-md text-green-700 lg:inline-flex  focus:bg-green-700 focus:text-white hover:text-white hover:bg-green-700">
+                        className="items-center justify-center hidden px-4 py-2 ml-10 font-semibold transition-all duration-200 bg-white border border-green-600 rounded-md text-green-700 lg:inline-flex  focus:bg-green-700 focus:text-white hover:text-white hover:bg-green-700">
                         Uloguj se
                     </Link>
 
                     <Link to="/register"
-                        className="items-center justify-center hidden px-4 py-3 ml-10 text-base font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md lg:inline-flex hover:bg-green-700 focus:bg-green-700">
+                        className="items-center justify-center hidden px-4 py-2 ml-10 text-base font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md lg:inline-flex hover:bg-green-700 focus:bg-green-700">
                         Registruj se
                     </Link>
                 </nav>
@@ -58,22 +58,22 @@ const Header = () => {
                         <div className="flow-root">
                             <div className="flex flex-col px-6 -my-2 space-y-1">
                                 <Link to="/" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">Naslovna</Link>
-                                <Link to="/about" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">Solutions</Link>
-                                <Link to="/donate" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">Resources</Link>
-                                <Link to="/leaderboard" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">Pricing</Link>
+                                <Link to="/about" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">O nama</Link>
+                                <Link to="/donate" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">Doniraj</Link>
+                                <Link to="/leaderboard" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">Rang lista</Link>
                             </div>
                         </div>
 
                         <div className="px-6 mt-6">
                             <Link to="/login"
-                                className="inline-flex justify-center px-4 py-3 text-green-700 font-semibold transition-all duration-200 bg-white border border-green-600 rounded-md items-center hover:bg-green-700 focus:text-white focus:bg-green-700 hover:text-white">
+                                className="inline-flex justify-center px-4 py-2 text-green-700 font-semibold transition-all duration-200 bg-white border border-green-600 rounded-md items-center hover:bg-green-700 focus:text-white focus:bg-green-700 hover:text-white">
                                 Uloguj se
                             </Link>
                         </div>
                         
                         <div className="px-6 mt-6">
                             <Link to="/register"
-                                className="inline-flex justify-center px-4 py-3 text-base font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md items-center hover:bg-green-700 focus:bg-green-700">
+                                className="inline-flex justify-center px-4 py-2 text-base font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md items-center hover:bg-green-700 focus:bg-green-700">
                                 Registruj se
                             </Link>
                         </div>
