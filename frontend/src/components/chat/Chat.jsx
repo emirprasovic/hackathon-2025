@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './Chat.css';
 
 const Chat = () => {
     const [input, setInput] = useState('');
@@ -28,7 +27,7 @@ const Chat = () => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${process.env.REACT_APP_GROQ_API_KEY}`,
+                    'Authorization': `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
                 },
                 body: JSON.stringify({
                     model: "llama-3.1-8b-instant",
@@ -60,7 +59,7 @@ const Chat = () => {
         <>
             {/* Floating Chat Bubble */}
             <div 
-                className="chat-bubble"
+                className="fixed bottom-8 right-8 w-14 h-14 bg-indigo-600 rounded-full flex items-center justify-center cursor-pointer hover:bg-indigo-700 shadow-lg transition-colors duration-200"
                 onClick={() => setIsChatOpen(!isChatOpen)}
             >
                 <svg
@@ -76,48 +75,57 @@ const Chat = () => {
 
             {/* Chat Interface */}
             {isChatOpen && (
-                <div className="chat-container">
-                    <div className="chat-window">
-                        <div className="chat-header">
-                            <h3>Chat Assistant</h3>
+                <div className="fixed bottom-24 right-8 w-[400px] h-[550px] bg-white rounded-xl shadow-2xl border border-gray-100">
+                    <div className="flex flex-col h-full">
+                        <div className="flex items-center px-6 py-4 border-b border-gray-100">
+                            <h3 className="text-lg font-semibold text-gray-800">Chat Assistant</h3>
                             <button 
-                                className="close-btn"
+                                className="ml-auto p-2 text-gray-400 hover:text-gray-600 transition-colors"
                                 onClick={() => setIsChatOpen(false)}
                             >
-                                &times;
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
                             </button>
                         </div>
                         
-                        <div className="chat-messages">
+                        <div className="flex-1 p-6 overflow-y-auto bg-gray-50">
                             {messages.map((msg, index) => (
                                 <div
                                     key={index}
-                                    className={`message ${msg.isUser ? 'user' : 'bot'}`}
+                                    className={`flex ${msg.isUser ? 'justify-end' : 'justify-start'} mb-4`}
                                 >
-                                    <div className="message-content">
-                                        <strong>{msg.isUser ? 'You' : 'Bot'}:</strong>
-                                        <p>{msg.text}</p>
+                                    <div className={`max-w-[75%] rounded-lg px-4 py-3 ${
+                                        msg.isUser 
+                                            ? 'bg-blue-600 text-white' 
+                                            : 'bg-white shadow-sm border border-gray-100'
+                                    }`}>
+                                        <p className="text-sm">{msg.text}</p>
                                     </div>
                                 </div>
                             ))}
                             <div ref={messagesEndRef} />
                         </div>
 
-                        <div className="chat-input">
-                            <input
-                                type="text"
-                                value={input}
-                                onChange={(e) => setInput(e.target.value)}
-                                placeholder="Type a message..."
-                                disabled={isLoading}
-                                onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-                            />
-                            <button
-                                onClick={sendMessage}
-                                disabled={isLoading}
-                            >
-                                {isLoading ? 'Sending...' : 'Send'}
-                            </button>
+                        <div className="px-4 py-4 bg-white border-t border-gray-100">
+                            <div className="flex items-center gap-3">
+                                <input
+                                    type="text"
+                                    value={input}
+                                    onChange={(e) => setInput(e.target.value)}
+                                    placeholder="Type a message..."
+                                    disabled={isLoading}
+                                    onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+                                    className="flex-1 px-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-blue-500"
+                                />
+                                <button
+                                    onClick={sendMessage}
+                                    disabled={isLoading}
+                                    className="px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                >
+                                    {isLoading ? 'Sending...' : 'Send'}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
