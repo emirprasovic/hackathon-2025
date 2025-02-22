@@ -7,7 +7,9 @@ import "./App.css";
 import LeaderboardPage from "./pages/leaderboards/LeaderboardPage";
 import LoginPage from "./pages/login/LoginPage";
 import RegisterPage from "./pages/register/RegisterPage";
+import MerchPage from "./pages/merch/MerchPage";
 import ProfilePage from "./pages/profile/ProfilePage";
+
 
 function App() {
   return (
@@ -20,11 +22,13 @@ function App() {
         <Route path="/donate" element={<DonatePage />} />
         <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/merch" element={<MerchPage />}></Route>
+        <Route path="/profile" element={<ProfilePage />}></Route>
       </Routes>
     </Router>
   );
 }
 
 export default App;
+
