@@ -11,13 +11,11 @@ userRouter.get("/logout", authController.logout); // da bismo izbrisali cookie n
 userRouter.post("/forgot-password", authController.forgotPassword);
 userRouter.patch("/reset-password/:token", authController.resetPassword);
 
-userRouter
-  .route("/")
-  .get(
-    authController.protect,
-    authController.restrictTo("admin", "user"),
-    userController.getAllUsers
-  );
+userRouter.get("/me", authController.protect, userController.getCurrentUser);
+
+userRouter.use(authController.protect, authController.restrictTo("admin"));
+
+userRouter.route("/").get(userController.getAllUsers);
 // .post(userController.createUser);
 
 userRouter

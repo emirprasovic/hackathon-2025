@@ -12,21 +12,20 @@ const leaderboardData = [
   { name: "Bob", amount: 75, purpose: "tree" },
   { name: "Charlie", amount: 200, purpose: "sea" },
   { name: "Diana", amount: 150, purpose: "tree" },
-  
 ];
 
 export default function LeaderboardPage() {
   const [sortBy, setSortBy] = useState("recent"); // "recent" or "biggest"
   const [filters, setFilters] = useState({ tree: true, sea: true }); // Filters for "tree" and "sea"
 
-  const handleSortChange = (e) => {
-    setSortBy(e.target.value);
-  };
+  //   const handleSortChange = (e) => {
+  //     setSortBy(e.target.value);
+  //   };
 
-  const handleFilterChange = (e) => {
-    const { name, checked } = e.target;
-    setFilters({ ...filters, [name]: checked });
-  };
+  //   const handleFilterChange = (e) => {
+  //     const { name, checked } = e.target;
+  //     setFilters({ ...filters, [name]: checked });
+  //   };
 
   const filteredData = leaderboardData
     .filter((item) => {
@@ -45,32 +44,37 @@ export default function LeaderboardPage() {
     });
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-green-200 p-6"
+    <div
+      className="flex flex-col items-center min-h-screen bg-green-200 p-6"
       style={{
         backgroundImage: "url('/images/green2.jpg')",
-        backgroundAttachment: "fixed", 
+        backgroundAttachment: "fixed",
         backgroundSize: "cover",
-        backgroundPosition: "center",  
-    }}>
+        backgroundPosition: "center",
+      }}
+    >
       <div className="bg-white p-8 rounded-2xl shadow-xl max-w-7xl w-full text-center">
         <h3 className="text-3xl font-bold text-gray-800 mb-6">🌍 Rang Lista</h3>
-        
+
         {/* Sorting and Filtering Options */}
         <div className="flex justify-between space-x-4 mb-8">
           {/* Sorting Buttons */}
           <div className="flex space-x-4">
             <button
               className={`px-6 py-2 rounded-lg transition-colors ${
-                sortBy === "recent" ? "bg-green-600 text-white" : "bg-gray-300 text-gray-700 hover:bg-gray-400"
+                sortBy === "recent"
+                  ? "bg-green-600 text-white"
+                  : "bg-gray-300 text-gray-700 hover:bg-gray-400"
               }`}
               onClick={() => setSortBy("recent")}
             >
-              
               Najskorije donacije
             </button>
             <button
               className={`px-6 py-2 rounded-lg transition-colors ${
-                sortBy === "biggest" ? "bg-green-600 text-white" : "bg-gray-300 text-gray-700 hover:bg-gray-400"
+                sortBy === "biggest"
+                  ? "bg-green-600 text-white"
+                  : "bg-gray-300 text-gray-700 hover:bg-gray-400"
               }`}
               onClick={() => setSortBy("biggest")}
             >
@@ -81,21 +85,26 @@ export default function LeaderboardPage() {
           {/* Toggle Buttons for Filters */}
           <div className="flex space-x-4 justify-between">
             <button
-              className={`px-6 py-2 rounded-lg transition-colors ${filters.tree ? "bg-green-600 text-white" : "bg-gray-300 text-gray-700 hover:bg-gray-400"
-                }`}
+              className={`px-6 py-2 rounded-lg transition-colors ${
+                filters.tree
+                  ? "bg-green-600 text-white"
+                  : "bg-gray-300 text-gray-700 hover:bg-gray-400"
+              }`}
               onClick={() => setFilters({ ...filters, tree: !filters.tree })}
             >
               Drveća
             </button>
             <button
-              className={`px-6 py-2 rounded-lg transition-colors ${filters.sea ? "bg-blue-600 text-white" : "bg-gray-300 text-gray-700 hover:bg-gray-400"
-                }`}
+              className={`px-6 py-2 rounded-lg transition-colors ${
+                filters.sea
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-300 text-gray-700 hover:bg-gray-400"
+              }`}
               onClick={() => setFilters({ ...filters, sea: !filters.sea })}
             >
               Rijeke
             </button>
           </div>
-
         </div>
 
         {/* Leaderboard List */}
@@ -103,8 +112,9 @@ export default function LeaderboardPage() {
           {filteredData.map((item, index) => (
             <div
               key={index}
-              className={`p-6 rounded-lg flex justify-between items-center shadow-lg hover:shadow-2xl transition-all ${item.purpose === "tree" ? "bg-green-50" : "bg-blue-50"
-                }`}
+              className={`p-6 rounded-lg flex justify-between items-center shadow-lg hover:shadow-2xl transition-all ${
+                item.purpose === "tree" ? "bg-green-50" : "bg-blue-50"
+              }`}
             >
               <div className="flex items-center space-x-4">
                 {/* Icon */}

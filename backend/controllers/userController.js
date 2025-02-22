@@ -9,6 +9,15 @@ exports.getUser = factory.getOne(User);
 exports.updateUser = factory.updateOne(User);
 exports.deleteUser = factory.deleteOne(User);
 
+exports.getCurrentUser = catchAsync(async (req, res, next) => {
+  const currentUser = await User.findById(req.user.id);
+
+  res.status(200).json({
+    status: "success",
+    data: currentUser,
+  });
+});
+
 // exports.createUser = catchAsync(async (req, res, next) => {
 //   if (!req.body.name || !req.body.email) {
 //     return next(new AppError("Invalid Request retardu"));
