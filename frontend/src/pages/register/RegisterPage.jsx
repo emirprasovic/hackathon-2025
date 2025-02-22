@@ -1,6 +1,40 @@
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+
+  const navigate = useNavigate();
+
+  function handleRegister(e) {
+    e.preventDefault();
+
+    if (!name || !email || !password || !passwordConfirm) {
+      alert("Please fill out all fields");
+      return;
+    }
+
+    axios
+      .post("http://localhost:3000/api/v1/user/signup", {
+        name,
+        email,
+        password,
+        passwordConfirm,
+      })
+      .then((res) => {
+        console.log(res);
+
+        localStorage.setItem("jwt", res.data.token);
+        localStorage.setItem("user", res.data.data.user.email);
+        localStorage.setItem("name", res.data.data.user.name);
+
+        navigate("/profile");
+      });
+  }
   return (
     <section
       className="bg-green-200"
@@ -30,6 +64,8 @@ export default function RegisterPage() {
                   type="text"
                   name="name"
                   id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
                   placeholder="John Doe"
                   required
@@ -48,6 +84,8 @@ export default function RegisterPage() {
                   type="email"
                   name="email"
                   id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
                   placeholder="name@company.com"
                   required
@@ -66,6 +104,8 @@ export default function RegisterPage() {
                   type="password"
                   name="password"
                   id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
                   required
@@ -84,6 +124,8 @@ export default function RegisterPage() {
                   type="password"
                   name="confirm-password"
                   id="confirm-password"
+                  value={passwordConfirm}
+                  onChange={(e) => setPasswordConfirm(e.target.value)}
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5"
                   required
@@ -94,6 +136,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 className="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                onClick={handleRegister}
               >
                 Create account
               </button>
