@@ -27,7 +27,13 @@ const DonatePage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-green-200 p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-green-200 p-6"
+    style={{
+      backgroundImage: "url('/images/green2.jpg')",
+      backgroundAttachment: "fixed", 
+      backgroundSize: "cover",
+      backgroundPosition: "center",  
+  }}>
       <div className="bg-white p-8 rounded-2xl shadow-xl max-w-lg w-full text-center">
         <h2 className="text-3xl font-bold text-gradient mb-6">🌳 ConTreeBute!</h2>
         <p className="text-gray-700 mb-6 text-lg font-semibold">Odaberi vrstu donacije</p>
