@@ -1,10 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   function handleLogin(e) {
     e.preventDefault();
@@ -19,6 +21,16 @@ export default function LoginPage() {
       .then((res) => {
         console.log(res);
         document.cookie = `jwt=${res.data.token}`;
+
+        localStorage.setItem("jwt", res.data.token);
+
+        if (res.data.status === "success") {
+          window.setTimeout(() => navigate("/donate"), 1000);
+        } else {
+          console.log("ERROR");
+        }
+
+        navigate("/donate");
       });
   }
 
