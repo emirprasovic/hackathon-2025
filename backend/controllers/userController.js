@@ -1,14 +1,17 @@
 const User = require("../models/userModel");
 const factory = require("./controllerFactory");
 
+const AppError = require("../utils/AppError");
+const catchAsync = require("../utils/catchAsync");
+
 exports.getAllUsers = factory.getAll(User);
 exports.getUser = factory.getOne(User);
 exports.updateUser = factory.updateOne(User);
 exports.deleteUser = factory.deleteOne(User);
 
-exports.createUser = async (req, res, next) => {
+exports.createUser = catchAsync(async (req, res, next) => {
   if (!req.body.name || !req.body.email) {
-    return res.status(401).json({ message: "invalid" });
+    return next(new AppError("Invalid Request retardu"));
   }
 
   const newUser = await User.create(req.body);
@@ -19,4 +22,4 @@ exports.createUser = async (req, res, next) => {
       data: newUser,
     },
   });
-};
+});
