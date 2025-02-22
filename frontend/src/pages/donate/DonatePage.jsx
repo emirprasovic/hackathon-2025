@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const donations = [
   { id: 1, name: "Posadi Drvo", description: "1 BAM posadi jedno drvo" },
@@ -7,10 +9,12 @@ const donations = [
 
 const amounts = [5, 20, 50, 100];
 
-const DonatePage = () => {
+function DonatePage() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedAmount, setSelectedAmount] = useState(null);
   const [customAmount, setCustomAmount] = useState("");
+
+  const navigate = useNavigate();
 
   const handleCustomAmountChange = (e) => {
     const value = e.target.value;
@@ -25,6 +29,43 @@ const DonatePage = () => {
     setSelectedAmount(amount);
     setCustomAmount("");
   };
+
+  function handleDonate(e) {
+    e.preventDefault();
+
+    if (!selectedCategory || !selectedAmount) {
+      alert("Invalid Request");
+      return;
+    }
+
+    const token = localStorage.getItem("jwt"); // Get token from localStorage
+    if (!token) {
+      navigate("/login");
+    }
+
+    axios
+      .get(
+        `http://localhost:3000/api/v1/payment/checkout-session?price=${selectedAmount}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Send JWT in Authorization header
+          },
+        }
+      )
+      .then((res) => {
+        if (res.status === 401) {
+          alert("You are not logged in");
+          return;
+        }
+
+        console.log(res);
+        // navigate(res.data.session.url);
+        document.location.assign(res.data.session.url);
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+      });
+  }
 
   return (
     <div
@@ -100,12 +141,15 @@ const DonatePage = () => {
           />
         </div>
 
-        <button className="w-full p-4 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transform transition-all duration-300">
+        <button
+          className="w-full p-4 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transform transition-all duration-300"
+          onClick={handleDonate}
+        >
           Doniraj
         </button>
       </div>
     </div>
   );
-};
+}
 
 export default DonatePage;

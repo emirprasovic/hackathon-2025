@@ -11,7 +11,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "payment",
-    success_url: `${req.protocol}://${req.get("host")}/?amount=${req.query.amount}&user=${req.user.id}`,
+    // success_url: `${req.protocol}://${req.get("host")}/?amount=${req.query.amount}&user=${req.user.id}`,
+    success_url: `http://localhost:5173/leaderboard`,
     cancel_url: `${req.protocol}://${req.get("host")}`,
     customer_email: req.user.email,
     client_reference_id: req.user.id,
@@ -19,7 +20,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
       {
         quantity: 1,
         price_data: {
-          currency: "eur",
+          currency: "bam",
           unit_amount: req.query.price * 100,
           product_data: {
             name: `${req.query.price} Donation`,
