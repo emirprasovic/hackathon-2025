@@ -59,7 +59,7 @@ const Chat = () => {
         <>
             {/* Floating Chat Bubble */}
             <div 
-                className="fixed bottom-8 right-8 w-14 h-14 bg-indigo-600 rounded-full flex items-center justify-center cursor-pointer hover:bg-indigo-700 shadow-lg transition-colors duration-200"
+                className="fixed bottom-8 z-10 right-8 w-14 h-14 bg-indigo-600 rounded-full flex items-center justify-center cursor-pointer hover:bg-indigo-700 shadow-lg transition-colors duration-200"
                 onClick={() => setIsChatOpen(!isChatOpen)}
             >
                 <svg
@@ -75,7 +75,7 @@ const Chat = () => {
 
             {/* Chat Interface */}
             {isChatOpen && (
-                <div className="fixed bottom-24 right-8 w-[400px] h-[550px] bg-white rounded-xl shadow-2xl border border-gray-100">
+                <div className="fixed z-10 bottom-24 right-8 w-[400px] h-[550px] bg-white rounded-xl shadow-2xl border border-gray-100">
                     <div className="flex flex-col h-full">
                         <div className="flex items-center px-6 py-4 border-b border-gray-100">
                             <h3 className="text-lg font-semibold text-gray-800">Chat Assistant</h3>
