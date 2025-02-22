@@ -91,6 +91,12 @@ const Header = () => {
               Doniraj
             </Link>
             <Link
+              to="/merch"
+              className="text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700"
+            >
+              Merch
+            </Link>
+            <Link
               to="/leaderboard"
               className="text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700"
             >
