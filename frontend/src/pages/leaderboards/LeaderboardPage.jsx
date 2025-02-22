@@ -53,7 +53,7 @@ export default function LeaderboardPage() {
         backgroundPosition: "center",  
     }}>
       <div className="bg-white p-8 rounded-2xl shadow-xl max-w-7xl w-full text-center">
-        <h3 className="text-3xl font-bold text-gray-800 mb-6">🌍 Leaderboard</h3>
+        <h3 className="text-3xl font-bold text-gray-800 mb-6">🌍 Rang Lista</h3>
         
         {/* Sorting and Filtering Options */}
         <div className="flex justify-between space-x-4 mb-8">
@@ -65,7 +65,8 @@ export default function LeaderboardPage() {
               }`}
               onClick={() => setSortBy("recent")}
             >
-              Recent
+              
+              Najskorije donacije
             </button>
             <button
               className={`px-6 py-2 rounded-lg transition-colors ${
@@ -73,7 +74,7 @@ export default function LeaderboardPage() {
               }`}
               onClick={() => setSortBy("biggest")}
             >
-              Biggest Donations
+              Najveće donacije
             </button>
           </div>
 
@@ -84,14 +85,14 @@ export default function LeaderboardPage() {
                 }`}
               onClick={() => setFilters({ ...filters, tree: !filters.tree })}
             >
-              Tree
+              Drveća
             </button>
             <button
               className={`px-6 py-2 rounded-lg transition-colors ${filters.sea ? "bg-blue-600 text-white" : "bg-gray-300 text-gray-700 hover:bg-gray-400"
                 }`}
               onClick={() => setFilters({ ...filters, sea: !filters.sea })}
             >
-              Sea
+              Rijeke
             </button>
           </div>
 
