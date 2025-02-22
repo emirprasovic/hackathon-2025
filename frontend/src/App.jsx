@@ -9,6 +9,7 @@ import LoginPage from "./pages/login/LoginPage";
 import RegisterPage from "./pages/register/RegisterPage";
 import MerchPage from "./pages/merch/MerchPage";
 import ProfilePage from "./pages/profile/ProfilePage";
+import AboutPage from "./pages/about/AboutPage";
 
 
 function App() {
@@ -16,10 +17,10 @@ function App() {
     <Router>
       <Chat />
       <Header />
-
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/donate" element={<DonatePage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />}></Route>
