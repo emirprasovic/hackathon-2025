@@ -63,7 +63,7 @@ const AboutPage = () => {
             <h3 className="text-xl font-bold text-green-800 mb-4">🌱 Vizija</h3>
             <p className="text-gray-700 leading-relaxed">
               Stvaranje globalne zajednice koja dijeli ekološke ideje i podstiče
-              održive promijene.
+              održive promjene.
             </p>
           </div>
 

@@ -14,9 +14,7 @@ function LandingPage() {
       {/* Content */}
       <div className="relative max-w-4xl mx-auto text-center px-4">
         <h1 className="text-6xl md:text-7xl font-bold text-white mb-8">
-          Spasimo Našu Okolinu,
-          <br />
-          Jednom po jednom donacijom.
+          Sačuvajmo našu životnu sredinu.
         </h1>
         <p className="text-xl text-gray-100 mb-10 leading-relaxed max-w-2xl mx-auto">
           Pridružite se našoj misiji u borbi protiv klimatskih promjena kroz

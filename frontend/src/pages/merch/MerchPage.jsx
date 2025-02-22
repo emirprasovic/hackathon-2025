@@ -2,7 +2,7 @@ const merchItems = [
     {
       id: 1,
       name: "Eco Majica",
-      description: "Napravljeno od 100% recikliranog materijala",
+      description: "Napravljeno od 100% recikliranog materijala.",
       price: "25 BAM",
       image: "/images/tshirtfinal.png",
     },
@@ -16,7 +16,7 @@ const merchItems = [
     {
       id: 3,
       name: "Eco-Friendly Ceker",
-      description: "Perfektan za namjernice i potrebštine.",
+      description: "Perfektan za namirnice i potrebštine.",
       price: "20 BAM",
       image: "/images/totebagfinal.png",
     },
