@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 // Mock data
 const leaderboardData = [
@@ -14,15 +14,15 @@ export default function LeaderboardPage() {
   const [filters, setFilters] = useState({ tree: true, sea: true }); // Filters for "tree" and "sea"
 
   // Handle radio button change
-  const handleSortChange = (e) => {
-    setSortBy(e.target.value);
-  };
+  //   const handleSortChange = (e) => {
+  //     setSortBy(e.target.value);
+  //   };
 
-  // Handle checkbox change
-  const handleFilterChange = (e) => {
-    const { name, checked } = e.target;
-    setFilters({ ...filters, [name]: checked });
-  };
+  //   // Handle checkbox change
+  //   const handleFilterChange = (e) => {
+  //     const { name, checked } = e.target;
+  //     setFilters({ ...filters, [name]: checked });
+  //   };
 
   // Filter and sort the data
   const filteredData = leaderboardData
