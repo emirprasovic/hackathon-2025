@@ -1,22 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 // Mock data
-const leaderboardData = [
-  { name: "Emir", amount: 50, purpose: "tree" },
-  { name: "Alice", amount: 100, purpose: "sea" },
-  { name: "Bob", amount: 75, purpose: "tree" },
-  { name: "Charlie", amount: 200, purpose: "sea" },
-  { name: "Diana", amount: 150, purpose: "tree" },
-  { name: "Emir", amount: 50, purpose: "tree" },
-  { name: "Alice", amount: 100, purpose: "sea" },
-  { name: "Bob", amount: 75, purpose: "tree" },
-  { name: "Charlie", amount: 200, purpose: "sea" },
-  { name: "Diana", amount: 150, purpose: "tree" },
-];
+// const leaderboardData = [
+//   { name: "Emir", amount: 50, purpose: "tree" },
+//   { name: "Alice", amount: 100, purpose: "sea" },
+//   { name: "Bob", amount: 75, purpose: "tree" },
+//   { name: "Charlie", amount: 200, purpose: "sea" },
+//   { name: "Diana", amount: 150, purpose: "tree" },
+//   { name: "Emir", amount: 50, purpose: "tree" },
+//   { name: "Alice", amount: 100, purpose: "sea" },
+//   { name: "Bob", amount: 75, purpose: "tree" },
+//   { name: "Charlie", amount: 200, purpose: "sea" },
+//   { name: "Diana", amount: 150, purpose: "tree" },
+// ];
 
 export default function LeaderboardPage() {
   const [sortBy, setSortBy] = useState("recent"); // "recent" or "biggest"
   const [filters, setFilters] = useState({ tree: true, sea: true }); // Filters for "tree" and "sea"
+
+  const [data, setData] = useState([]);
 
   //   const handleSortChange = (e) => {
   //     setSortBy(e.target.value);
@@ -27,21 +30,37 @@ export default function LeaderboardPage() {
   //     setFilters({ ...filters, [name]: checked });
   //   };
 
-  const filteredData = leaderboardData
-    .filter((item) => {
-      if (filters.tree && filters.sea) return true;
-      if (filters.tree && item.purpose === "tree") return true;
-      if (filters.sea && item.purpose === "sea") return true;
-      return false;
-    })
-    .sort((a, b) => {
-      if (sortBy === "recent") {
-        return 0;
-      } else if (sortBy === "biggest") {
-        return b.amount - a.amount;
-      }
-      return 0;
-    });
+  // const filteredData = leaderboardData
+  //   .filter((item) => {
+  //     if (filters.tree && filters.sea) return true;
+  //     if (filters.tree && item.purpose === "tree") return true;
+  //     if (filters.sea && item.purpose === "sea") return true;
+  //     return false;
+  //   })
+  //   .sort((a, b) => {
+  //     if (sortBy === "recent") {
+  //       return 0;
+  //     } else if (sortBy === "biggest") {
+  //       return b.amount - a.amount;
+  //     }
+  //     return 0;
+  //   });
+
+  useEffect(
+    function () {
+      const url =
+        sortBy === "recent"
+          ? "http://localhost:3000/api/v1/donation?sort=-_id"
+          : "http://localhost:3000/api/v1/donation?sort=-amount";
+
+      axios.get(url).then((res) => {
+        console.log(res.data);
+        console.log("NIZO:", res.data.data.data);
+        setData(res.data.data.data);
+      });
+    },
+    [sortBy]
+  );
 
   return (
     <div
@@ -109,7 +128,7 @@ export default function LeaderboardPage() {
 
         {/* Leaderboard List */}
         <div className="space-y-4">
-          {filteredData.map((item, index) => (
+          {data.map((item, index) => (
             <div
               key={index}
               className={`p-6 rounded-lg flex justify-between items-center shadow-lg hover:shadow-2xl transition-all ${

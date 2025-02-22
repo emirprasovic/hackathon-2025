@@ -3,8 +3,18 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const donations = [
-  { id: 1, name: "Posadi Drvo", description: "1 BAM posadi jedno drvo" },
-  { id: 2, name: "Očisti Rijeku", description: "1 BAM očisti 1 metar toka" },
+  {
+    id: 1,
+    purpose: "tree",
+    description: "1 BAM posadi jedno drvo",
+    implementationPurpose: "🌳 Posadi Drvo",
+  },
+  {
+    id: 2,
+    purpose: "river",
+    description: "1 BAM očisti 1 metar obale",
+    implementationPurpose: "🌊 Ocisti Rijeku",
+  },
 ];
 
 const amounts = [5, 20, 50, 100];
@@ -42,6 +52,17 @@ function DonatePage() {
     if (!token) {
       navigate("/login");
     }
+
+    axios
+      .post("http://localhost:3000/api/v1/donation", {
+        email: localStorage.getItem("user"),
+        name: localStorage.getItem("name"),
+        purpose: selectedCategory,
+        amount: selectedAmount ? selectedAmount : customAmount,
+      })
+      .then((res) => {
+        console.log("DB: ", res);
+      });
 
     axios
       .get(
@@ -90,15 +111,17 @@ function DonatePage() {
             <div
               key={donation.id}
               className={`p-6 border-2 rounded-xl cursor-pointer transition-all duration-300 transform hover:scale-105 ${
-                selectedCategory === donation.name
+                selectedCategory === donation.purpose
                   ? donation.id === 2
                     ? "bg-blue-500 text-white border-blue-600 shadow-lg"
                     : "bg-green-500 text-white border-green-600 shadow-lg"
                   : "bg-gray-50 text-gray-700 hover:bg-gray-200"
               }`}
-              onClick={() => setSelectedCategory(donation.name)}
+              onClick={() => setSelectedCategory(donation.purpose)}
             >
-              <h3 className="text-xl font-semibold">{donation.name}</h3>
+              <h3 className="text-xl font-semibold">
+                {donation.implementationPurpose}
+              </h3>
               <p className="text-sm">{donation.description}</p>
             </div>
           ))}

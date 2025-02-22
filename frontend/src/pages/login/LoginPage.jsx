@@ -23,6 +23,8 @@ export default function LoginPage() {
         document.cookie = `jwt=${res.data.token}`;
 
         localStorage.setItem("jwt", res.data.token);
+        localStorage.setItem("user", res.data.data.user.email);
+        localStorage.setItem("name", res.data.data.user.name);
 
         if (res.data.status === "success") {
           window.setTimeout(() => navigate("/donate"), 1000);
