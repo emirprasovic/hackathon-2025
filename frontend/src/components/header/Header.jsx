@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false); 
@@ -8,13 +9,13 @@ const Header = () => {
     };
 
     return (
-        <header className="pb-6 bg-blue-900 lg:pb-0">
+        <header className="pb-6 bg-white-50 lg:pb-0">
             <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <nav className="flex items-center justify-between h-16 lg:h-20">
                     <div className="flex-shrink-0">
-                        <a href="#" title="" className="flex">
-                            <img className="w-auto h-8 lg:h-10" src="https://cdn.rareblocks.xyz/collection/celebration/images/logo.svg" alt="" />
-                        </a>
+                        <Link to="/" className="flex">
+                            <img className="w-auto h-9 lg:h-11" src="../../images/logo.png" alt="logo" />
+                        </Link>
                     </div>
 
                     <button
@@ -32,31 +33,49 @@ const Header = () => {
                     </button>
 
                     {/* Desktop Menu */}
-                    <div className="hidden lg:flex lg:items-center lg:ml-auto lg:space-x-10">
-                        <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Naslovna </a>
-                        <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> O nama </a>
-                        <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Doniraj </a>
-                        <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Rang lista </a>
+                    <div className="hidden items-center lg:flex lg:items-center lg:ml-auto lg:space-x-10">
+                        <Link to="/" className="text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">Naslovna</Link>
+                        <Link to="/about" className="text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">O nama</Link>
+                        <Link to="/donate" className="text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">Doniraj</Link>
+                        <Link to="/leaderboard" className="text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">Rang lista</Link>
                     </div>
 
-                    {/* Desktop Button */}
-                    <a href="#" title="" className="items-center justify-center hidden px-4 py-3 ml-10 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md lg:inline-flex hover:bg-blue-700 focus:bg-blue-700" role="button"> Get started now </a>
+                    {/* Desktop Buttons */}
+                    <Link to="/login"
+                        className="items-center justify-center hidden px-4 py-3 ml-10 font-semibold transition-all duration-200 bg-white border border-green-600 rounded-md text-green-700 lg:inline-flex  focus:bg-green-700 focus:text-white hover:text-white hover:bg-green-700">
+                        Uloguj se
+                    </Link>
+
+                    <Link to="/register"
+                        className="items-center justify-center hidden px-4 py-3 ml-10 text-base font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md lg:inline-flex hover:bg-green-700 focus:bg-green-700">
+                        Registruj se
+                    </Link>
                 </nav>
 
                 {/* Mobile Menu */}
                 {isMenuOpen && (
-                    <nav className="pt-4 pb-6 bg-green-800 border border-gray-200 rounded-md shadow-md lg:hidden">
+                    <nav className="pt-4 pb-6 bg-white border border-gray-200 rounded-md shadow-md lg:hidden">
                         <div className="flow-root">
                             <div className="flex flex-col px-6 -my-2 space-y-1">
-                                <a href="#" title="" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Features </a>
-                                <a href="#" title="" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Solutions </a>
-                                <a href="#" title="" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Resources </a>
-                                <a href="#" title="" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Pricing </a>
+                                <Link to="/" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">Naslovna</Link>
+                                <Link to="/about" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">Solutions</Link>
+                                <Link to="/donate" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">Resources</Link>
+                                <Link to="/leaderboard" className="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-700">Pricing</Link>
                             </div>
                         </div>
 
                         <div className="px-6 mt-6">
-                            <a href="#" title="" className="inline-flex justify-center px-4 py-3 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md tems-center hover:bg-blue-700 focus:bg-blue-700" role="button"> Get started now </a>
+                            <Link to="/login"
+                                className="inline-flex justify-center px-4 py-3 text-green-700 font-semibold transition-all duration-200 bg-white border border-green-600 rounded-md items-center hover:bg-green-700 focus:text-white focus:bg-green-700 hover:text-white">
+                                Uloguj se
+                            </Link>
+                        </div>
+                        
+                        <div className="px-6 mt-6">
+                            <Link to="/register"
+                                className="inline-flex justify-center px-4 py-3 text-base font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md items-center hover:bg-green-700 focus:bg-green-700">
+                                Registruj se
+                            </Link>
                         </div>
                     </nav>
                 )}
