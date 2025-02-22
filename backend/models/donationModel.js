@@ -7,6 +7,9 @@ const donationSchema = mongoose.Schema(
       ref: "User",
       required: [true, "A donation must belong to an User"],
     },
+    email: {
+      type: String,
+    },
     amount: {
       type: Number,
       required: [true, "A donation must have an amount"],

@@ -8,6 +8,6 @@ donationRouter
   .get(donationController.getAllDonations)
   .post(donationController.createDonation);
 
-donationRouter.route("/:id").get(donationController.getDonation);
+donationRouter.route("/:email").get(donationController.getTotalUserDonations);
 
 module.exports = donationRouter;

@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 
 const userRouter = require("./routes/userRouter");
 const donationRouter = require("./routes/donationRouter");
+const paymentRouter = require("./routes/paymentRouter");
 
 const AppError = require("./utils/AppError");
 const globalErrorHandler = require("./controllers/errorController");
@@ -20,6 +21,7 @@ app.use(cookieParser());
 // Mounting Routers
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/donation", donationRouter);
+app.use("/api/v1/payment", paymentRouter);
 
 // 404 Handler
 app.all("*", (req, res, next) => {

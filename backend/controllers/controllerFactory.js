@@ -76,7 +76,11 @@ exports.getAll = (Model) =>
 
     const query = Model.find(filter);
 
-    const featurizedQuery = new QueryFeatures(query, req.query).filter().sort();
+    const featurizedQuery = new QueryFeatures(query, req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
 
     // console.log(req.query);
     // { year: { gt: '300' }, director: 'Sergio Leone' }

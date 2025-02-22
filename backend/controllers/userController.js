@@ -9,17 +9,17 @@ exports.getUser = factory.getOne(User);
 exports.updateUser = factory.updateOne(User);
 exports.deleteUser = factory.deleteOne(User);
 
-exports.createUser = catchAsync(async (req, res, next) => {
-  if (!req.body.name || !req.body.email) {
-    return next(new AppError("Invalid Request retardu"));
-  }
+// exports.createUser = catchAsync(async (req, res, next) => {
+//   if (!req.body.name || !req.body.email) {
+//     return next(new AppError("Invalid Request retardu"));
+//   }
 
-  const newUser = await User.create(req.body);
+//   const newUser = await User.create(req.body);
 
-  res.status(201).json({
-    status: "success",
-    data: {
-      data: newUser,
-    },
-  });
-});
+//   res.status(201).json({
+//     status: "success",
+//     data: {
+//       data: newUser,
+//     },
+//   });
+// });

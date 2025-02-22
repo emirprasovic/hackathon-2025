@@ -17,8 +17,8 @@ userRouter
     authController.protect,
     authController.restrictTo("admin", "user"),
     userController.getAllUsers
-  )
-  .post(userController.createUser);
+  );
+// .post(userController.createUser);
 
 userRouter
   .route("/:id")

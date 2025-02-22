@@ -25,7 +25,7 @@ exports.createDonation = catchAsync(async (req, res, next) => {
     you will only be given a complete donation sum for that user.
     Return the message inside a JSON object.`;
 
-  const user_prompt = newDoc.amount;
+  const user_prompt = `${newDoc.amount}`;
 
   try {
     const apiResponse = await together.chat.completions.create({
@@ -58,6 +58,24 @@ exports.createDonation = catchAsync(async (req, res, next) => {
     console.error("Error: ", error.responseMessage?.data || error.message);
     res.status(500).json({ error: "Failed to generate reward message" });
   }
+});
+
+exports.getTotalUserDonations = catchAsync(async (req, res, next) => {
+  const totalDonations = await Donation.aggregate([
+    {
+      $match: {
+        email: req.params.email,
+      },
+    },
+    {
+      $group: {
+        _id: "$user",
+        totalDonations: { $sum: "$amount" },
+      },
+    },
+  ]);
+
+  res.status(200).json({ status: "success", data: totalDonations });
 });
 
 exports.getAllDonations = factory.getAll(Donation);
