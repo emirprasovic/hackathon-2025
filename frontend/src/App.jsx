@@ -5,6 +5,8 @@ import Header from "./components/header/Header";
 import DonatePage from "./pages/donate/DonatePage";
 import "./App.css";
 import LeaderboardPage from "./pages/leaderboards/LeaderboardPage";
+import LoginPage from "./pages/login/LoginPage";
+import RegisterPage from "./pages/register/RegisterPage";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/donate" element={<DonatePage />} />
         <Route path="/leaderboard" element={<LeaderboardPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />}></Route>
       </Routes>
     </Router>
   );
