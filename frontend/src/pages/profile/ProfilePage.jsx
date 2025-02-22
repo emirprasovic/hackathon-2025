@@ -15,7 +15,6 @@ export default function ProfilePage() {
   useEffect(function () {
     if (!user) return;
     axios.get("http://localhost:3000/api/v1/donation/" + user).then((res) => {
-      console.log("GEJ", res);
       setTokens(res.data.data[0].totalDonations);
     });
   }, []);
