@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function RegisterPage() {
   return (
     <section
@@ -99,12 +101,12 @@ export default function RegisterPage() {
               {/* Login Link */}
               <p className="text-sm font-light text-gray-500">
                 Already have an account?{" "}
-                <a
-                  href="#"
+                <Link
+                  to={"/login"}
                   className="font-medium text-green-600 hover:underline"
                 >
                   Sign in
-                </a>
+                </Link>
               </p>
             </form>
           </div>
