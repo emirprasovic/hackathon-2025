@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -14,7 +17,7 @@ export default function RegisterPage() {
     e.preventDefault();
 
     if (!name || !email || !password || !passwordConfirm) {
-      alert("Please fill out all fields");
+      toast.error("Please fill out all fields");
       return;
     }
 
@@ -32,8 +35,12 @@ export default function RegisterPage() {
         localStorage.setItem("user", res.data.data.user.email);
         localStorage.setItem("name", res.data.data.user.name);
 
-        navigate("/profile");
-        window.location.reload();
+        toast.success("Registered successfully!");
+
+        setTimeout(() => {
+          navigate("/");
+          window.location.reload();
+        }, 2000); 
       });
   }
   return (
@@ -46,6 +53,18 @@ export default function RegisterPage() {
         backgroundPosition: "center",
       }}
     >
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

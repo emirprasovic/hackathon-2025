@@ -1,6 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -27,13 +30,18 @@ export default function LoginPage() {
         localStorage.setItem("name", res.data.data.user.name);
 
         if (res.data.status === "success") {
-          window.setTimeout(() => navigate("/donate"), 1000);
-        } else {
-          console.log("ERROR");
-        }
+          toast.success("Logged in successfully!");
 
-        navigate("/donate");
-        window.location.reload();
+          setTimeout(() => {
+            navigate("/donate");
+          }, 2000); 
+        } else {
+          toast.error("Login failed. Please try again.");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        toast.error("Invalid credentials or server error!");
       });
   }
 
@@ -47,6 +55,18 @@ export default function LoginPage() {
         backgroundPosition: "center",
       }}
     >
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

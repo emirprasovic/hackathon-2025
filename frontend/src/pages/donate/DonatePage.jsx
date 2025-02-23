@@ -1,6 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const donations = [
   {
@@ -44,7 +47,7 @@ function DonatePage() {
     e.preventDefault();
 
     if (!selectedCategory || !selectedAmount) {
-      alert("Invalid Request");
+      toast.error("Please select all necessary fields!");
       return;
     }
 
@@ -62,6 +65,7 @@ function DonatePage() {
       })
       .then((res) => {
         console.log("DB: ", res);
+        toast.success("Donacija uspješna! Preusmjeravamo vas na plaćanje...");
       });
 
     axios
@@ -75,7 +79,7 @@ function DonatePage() {
       )
       .then((res) => {
         if (res.status === 401) {
-          alert("You are not logged in");
+          toast.error("You are not logged in");
           return;
         }
 
@@ -98,6 +102,18 @@ function DonatePage() {
         backgroundPosition: "center",
       }}
     >
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="bg-white p-8 rounded-2xl shadow-xl max-w-lg w-full text-center">
         <h2 className="text-3xl font-bold text-gradient mb-6">
           🌳 ConTreeBute!
