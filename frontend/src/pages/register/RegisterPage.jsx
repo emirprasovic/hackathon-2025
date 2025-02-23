@@ -33,6 +33,7 @@ export default function RegisterPage() {
         localStorage.setItem("name", res.data.data.user.name);
 
         navigate("/profile");
+        window.location.reload();
       });
   }
   return (
