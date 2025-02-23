@@ -16,11 +16,11 @@ import axios from "axios";
 // ];
 
 export default function LeaderboardPage() {
-  const [sortBy, setSortBy] = useState("recent"); // "recent" or "biggest"
-  const [filters, setFilters] = useState({ tree: true, sea: true }); // Filters for "tree" and "sea"
+  const [sortBy, setSortBy] = useState("recent");
+  const [filters, setFilters] = useState({ tree: true, sea: true });
 
-  const [originalData, setOriginalData] = useState([]); // Store the fetched data
-  const [data, setData] = useState([]); // Store the filtered data
+  const [originalData, setOriginalData] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const url =
