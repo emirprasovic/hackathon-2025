@@ -4,7 +4,7 @@ const RedemptionCard = ({ tokens }) => {
     <>
       {/* Moji Tokeni Section */}
       <div className="max-w-md mx-auto text-center bg-white rounded-xl shadow-md overflow-hidden p-6 mt-6">
-        <h2 className="text-xl font-semibold mx-auto text-gray-800 mb-4">
+        <h2 className="text-2xl font-semibold mx-auto text-gray-800 mb-4">
           Moji Tokeni
         </h2>
 
