@@ -138,6 +138,10 @@ hackatchon-2025/
 │   ├── package-lock.json
 │   └── server.js
 ```
+## Tests
+There is additional github repository with test for this application.
+`https://github.com/salihRogo/hackaton2025-test.git`
+
 ## Our team
 
  - Emir Prašović
