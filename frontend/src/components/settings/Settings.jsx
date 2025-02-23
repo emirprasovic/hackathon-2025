@@ -56,7 +56,10 @@ const Settings = () => {
       console.log(res);
 
       if (res.data.status === "success") {
-        window.setTimeout(() => navigate("/"), 1000);
+        window.setTimeout(() => {
+          navigate("/");
+          window.location.reload();
+        }, 1000);
       } else {
         console.log("ERROR");
       }

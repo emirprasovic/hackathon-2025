@@ -33,6 +33,7 @@ export default function LoginPage() {
         }
 
         navigate("/donate");
+        window.location.reload();
       });
   }
 

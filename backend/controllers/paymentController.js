@@ -13,7 +13,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     mode: "payment",
     // success_url: `${req.protocol}://${req.get("host")}/?amount=${req.query.amount}&user=${req.user.id}`,
     success_url: `http://localhost:5173/leaderboard`,
-    cancel_url: `${req.protocol}://${req.get("host")}`,
+    // cancel_url: `${req.protocol}://${req.get("host")}`,
+    cancel_url: `http://localhost:5173/donate`,
     customer_email: req.user.email,
     client_reference_id: req.user.id,
     line_items: [
