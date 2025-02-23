@@ -11,9 +11,14 @@ userRouter.get("/logout", authController.logout); // da bismo izbrisali cookie n
 userRouter.post("/forgot-password", authController.forgotPassword);
 userRouter.patch("/reset-password/:token", authController.resetPassword);
 
-userRouter.get("/me", authController.protect, userController.getCurrentUser);
+userRouter.use(authController.protect);
 
-userRouter.use(authController.protect, authController.restrictTo("admin"));
+userRouter.get("/me", userController.getCurrentUser);
+
+userRouter.patch("/update-my-password", authController.changePassword);
+userRouter.patch("/update-me", userController.updateMe);
+
+userRouter.use(authController.restrictTo("admin"));
 
 userRouter.route("/").get(userController.getAllUsers);
 // .post(userController.createUser);
