@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Redeem from "../../components/redeem-qr/Redeem";
 import Settings from "../../components/settings/Settings";
 import Donations from "../../components/mydonations/MyDonations";
+import Achievements from "../../components/achievements/Achievements";
 import axios from "axios";
 
 export default function ProfilePage() {
@@ -11,6 +12,10 @@ export default function ProfilePage() {
   const [tokens, setTokens] = useState(0);
 
   const user = localStorage.getItem("user");
+
+  const handleRedeem = () => {
+    setSelectedSection("redeem");
+  };
 
   useEffect(function () {
     if (!user) return;
@@ -41,6 +46,8 @@ export default function ProfilePage() {
         return <Settings />;
       case "donations":
         return <Donations data={donationData} />;
+        case "achievements":
+          return <Achievements onRedeem={handleRedeem} />;
       default:
         return <Settings />;
     }
@@ -95,8 +102,22 @@ export default function ProfilePage() {
                       : "text-gray-700 hover:text-green-600"
                   }`}
                 >
-                  <span className="mr-2">⭐</span>
+                  <span className="mr-2">🪙</span>
                   <span>Eko Tokeni</span>
+                </button>
+              </li>
+
+              <li>
+                <button
+                  onClick={() => setSelectedSection("achievements")}
+                  className={`w-full text-left flex items-center ${
+                    selectedSection === "achievements"
+                      ? "text-green-600 font-semibold"
+                      : "text-gray-700 hover:text-green-600"
+                  }`}
+                >
+                  <span className="mr-2">⭐</span>
+                  <span>Dostignuća</span>
                 </button>
               </li>
             </ul>
@@ -147,7 +168,11 @@ export default function ProfilePage() {
           </nav>
 
           <div className="flex-1 bg-white p-6 rounded-lg shadow-md">
-            {renderSection()}
+            {selectedSection === "achievements" ? (
+              <Achievements onRedeem={handleRedeem} />
+            ) : (
+              renderSection()
+            )}
           </div>
         </div>
       </main>
