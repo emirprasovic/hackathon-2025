@@ -1,9 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer } from 'react-toastify';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -34,7 +34,8 @@ export default function LoginPage() {
 
           setTimeout(() => {
             navigate("/donate");
-          }, 2000); 
+            window.location.reload();
+          }, 2000);
         } else {
           toast.error("Login failed. Please try again.");
         }
