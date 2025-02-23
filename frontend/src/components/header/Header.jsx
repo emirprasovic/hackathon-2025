@@ -120,13 +120,13 @@ const Header = () => {
                 to="/login"
                 className="px-4 py-2 mr-4 font-semibold text-green-700 bg-white border border-green-600 rounded-md hover:bg-green-700 hover:text-white"
               >
-                Uloguj se
+                Prijava
               </Link>
               <Link
                 to="/register"
                 className="px-4 py-2 text-base font-semibold text-white bg-green-600 rounded-md hover:bg-green-700"
               >
-                Registruj se
+                Registracija
               </Link>
             </div>
           )}
