@@ -19,48 +19,32 @@ export default function LeaderboardPage() {
   const [sortBy, setSortBy] = useState("recent"); // "recent" or "biggest"
   const [filters, setFilters] = useState({ tree: true, sea: true }); // Filters for "tree" and "sea"
 
-  const [data, setData] = useState([]);
+  const [originalData, setOriginalData] = useState([]); // Store the fetched data
+  const [data, setData] = useState([]); // Store the filtered data
 
-  //   const handleSortChange = (e) => {
-  //     setSortBy(e.target.value);
-  //   };
+  useEffect(() => {
+    const url =
+      sortBy === "recent"
+        ? "http://localhost:3000/api/v1/donation?sort=-_id"
+        : "http://localhost:3000/api/v1/donation?sort=-amount";
 
-  //   const handleFilterChange = (e) => {
-  //     const { name, checked } = e.target;
-  //     setFilters({ ...filters, [name]: checked });
-  //   };
+    axios.get(url).then((res) => {
+      console.log("Fetched Data:", res.data.data.data);
+      setOriginalData(res.data.data.data);
+      setData(res.data.data.data);
+    });
+  }, [sortBy]);
 
-  // const filteredData = leaderboardData
-  //   .filter((item) => {
-  //     if (filters.tree && filters.sea) return true;
-  //     if (filters.tree && item.purpose === "tree") return true;
-  //     if (filters.sea && item.purpose === "sea") return true;
-  //     return false;
-  //   })
-  //   .sort((a, b) => {
-  //     if (sortBy === "recent") {
-  //       return 0;
-  //     } else if (sortBy === "biggest") {
-  //       return b.amount - a.amount;
-  //     }
-  //     return 0;
-  //   });
-
-  useEffect(
-    function () {
-      const url =
-        sortBy === "recent"
-          ? "http://localhost:3000/api/v1/donation?sort=-_id"
-          : "http://localhost:3000/api/v1/donation?sort=-amount";
-
-      axios.get(url).then((res) => {
-        console.log(res.data);
-        console.log("NIZO:", res.data.data.data);
-        setData(res.data.data.data);
-      });
-    },
-    [sortBy]
-  );
+  useEffect(() => {
+    setData(
+      originalData.filter(
+        (item) =>
+          (filters.tree && item.purpose === "tree") ||
+          (filters.sea && item.purpose === "river") ||
+          (!filters.tree && !filters.sea)
+      )
+    );
+  }, [filters, originalData]);
 
   return (
     <div

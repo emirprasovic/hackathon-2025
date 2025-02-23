@@ -61,7 +61,7 @@ const RedemptionCard = ({ tokens }) => {
               </span>
               <a
                 href={item.link}
-                className="text-green-600 font-semibold hover:underline"
+                className="text-green-600 font-semibold hover:underline text-xl"
               >
                 +
               </a>
