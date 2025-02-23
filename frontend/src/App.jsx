@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LandingPage from "./pages/landing/LandingPage";
-import Chat from "./components/chat/Chat";
-import Header from "./components/header/Header";
-import DonatePage from "./pages/donate/DonatePage";
+import LandingPage from "./pages/LandingPage";
+import Chat from "./components/Chat";
+import Header from "./components/Header";
+import DonatePage from "./pages/DonatePage";
 import "./App.css";
-import LeaderboardPage from "./pages/leaderboards/LeaderboardPage";
-import LoginPage from "./pages/login/LoginPage";
-import RegisterPage from "./pages/register/RegisterPage";
-import MerchPage from "./pages/merch/MerchPage";
-import ProfilePage from "./pages/profile/ProfilePage";
-import AboutPage from "./pages/about/AboutPage";
+import LeaderboardPage from "./pages/LeaderboardPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import MerchPage from "./pages/MerchPage";
+import ProfilePage from "./pages/ProfilePage";
+import AboutPage from "./pages/AboutPage";
 
 
 function App() {
