@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import Redeem from "../../components/redeem-qr/Redeem";
 import Settings from "../../components/settings/Settings";
@@ -7,7 +8,7 @@ import axios from "axios";
 
 export default function ProfilePage() {
   const [selectedSection, setSelectedSection] = useState("settings");
-
+  const [isAdmin, setIsAdmin] = useState(false);
   const [donationData, setDonationData] = useState([]);
   const [tokens, setTokens] = useState(0);
 
@@ -46,8 +47,8 @@ export default function ProfilePage() {
         return <Settings />;
       case "donations":
         return <Donations data={donationData} />;
-        case "achievements":
-          return <Achievements onRedeem={handleRedeem} />;
+      case "achievements":
+        return <Achievements onRedeem={handleRedeem} />;
       default:
         return <Settings />;
     }
@@ -121,50 +122,51 @@ export default function ProfilePage() {
                 </button>
               </li>
             </ul>
-
-            <div className="mt-8">
-              <h5 className="text-sm font-semibold text-gray-500 uppercase mb-4">
-                Admin
-              </h5>
-              <ul className="space-y-4">
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-700 hover:text-green-600"
-                  >
-                    <span className="mr-2">🗺️</span>
-                    <span>Upravaljaj donacijama</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-700 hover:text-green-600"
-                  >
-                    <span className="mr-2">👥</span>
-                    <span>Upravljaj korisnicima</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-700 hover:text-green-600"
-                  >
-                    <span className="mr-2">⭐</span>
-                    <span>Upravljaj popustima</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center text-gray-700 hover:text-green-600"
-                  >
-                    <span className="mr-2">💼</span>
-                    <span>Upravljaj organizacijama</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+            {isAdmin && (
+              <div className="mt-8">
+                <h5 className="text-sm font-semibold text-gray-500 uppercase mb-4">
+                  Admin
+                </h5>
+                <ul className="space-y-4">
+                  <li>
+                    <a
+                      href="#"
+                      className="flex items-center text-gray-700 hover:text-green-600"
+                    >
+                      <span className="mr-2">🗺️</span>
+                      <span>Upravaljaj donacijama</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="flex items-center text-gray-700 hover:text-green-600"
+                    >
+                      <span className="mr-2">👥</span>
+                      <span>Upravljaj korisnicima</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="flex items-center text-gray-700 hover:text-green-600"
+                    >
+                      <span className="mr-2">⭐</span>
+                      <span>Upravljaj popustima</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      className="flex items-center text-gray-700 hover:text-green-600"
+                    >
+                      <span className="mr-2">💼</span>
+                      <span>Upravljaj organizacijama</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            )}
           </nav>
 
           <div className="flex-1 bg-white p-6 rounded-lg shadow-md">
