@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
-import Redeem from "../../components/redeem-qr/Redeem";
-import Settings from "../../components/settings/Settings";
-import Donations from "../../components/mydonations/MyDonations";
-import Achievements from "../../components/achievements/Achievements";
+import Redeem from "../components/Redeem";
+import Settings from "../components/Settings";
+import Donations from "../components/MyDonations";
+import Achievements from "../components/Achievements";
 import axios from "axios";
 
 export default function ProfilePage() {
